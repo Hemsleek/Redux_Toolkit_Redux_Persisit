@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 
-const initialState = []
+const initialState = {
+    blogs: []
+}
 
 const blogReducer = createSlice({
     name: 'blog',
@@ -9,7 +11,9 @@ const blogReducer = createSlice({
     reducers: {
         addBlog(state, action) {
             const newBlogData = action.payload;
-            state.push(newBlogData);
+            console.log('inside', state.blogs)
+            state.blogs.push(newBlogData);
+
         },
     }
 })

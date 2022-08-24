@@ -4,8 +4,8 @@ import "./App.css";
 import { addBlog } from "./store/blogReducer";
 
 function App() {
-  const blogs = useSelector((state) => state.blogReducer);
-
+  const blogs = useSelector((state) => state.blogs);
+  console.log(blogs);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
