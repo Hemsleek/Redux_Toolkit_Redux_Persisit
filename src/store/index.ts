@@ -21,7 +21,9 @@ console.log(blogReducer);
 const persistedBlogReducer = persistReducer(persistConfig, blogReducer);
 
 const store = configureStore({
-  reducer: persistedBlogReducer,
+  reducer: {
+    blogReducer: persistedBlogReducer,
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
