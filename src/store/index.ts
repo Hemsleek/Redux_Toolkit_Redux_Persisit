@@ -16,16 +16,13 @@ const persistConfig: any = {
   key: "blogs",
   storage,
 };
-console.log(blogReducer);
 
-const rootReducer = combineReducers({
-  blogReducer,
-  blogReducer2: blogReducer,
-});
-const persistedBlogReducer = persistReducer(persistConfig, rootReducer);
+const persistedBlogReducer = persistReducer(persistConfig, blogReducer);
 
 const store = configureStore({
-  reducer: persistedBlogReducer,
+  reducer: {
+    blogReducer: persistedBlogReducer,
+  },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

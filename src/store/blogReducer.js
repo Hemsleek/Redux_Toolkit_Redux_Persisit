@@ -11,7 +11,7 @@ const blogReducer = createSlice({
     reducers: {
         addBlog(state, action) {
             const newBlogData = action.payload;
-            console.log('inside', state.blogs)
+
             state.blogs.push(newBlogData);
 
         },
