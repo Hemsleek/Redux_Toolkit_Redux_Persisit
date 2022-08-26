@@ -4,7 +4,9 @@ import "./App.css";
 import { addBlog } from "./store/blogReducer";
 
 function App() {
-  const blogs = useSelector((state) => state.blogReducer.blogs);
+  const {
+    blogReducer: { blogs },
+  } = useSelector((state) => state);
   console.log(blogs);
   const dispatch = useDispatch();
 

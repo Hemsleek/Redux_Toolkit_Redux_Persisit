@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import {
   FLUSH,
   PAUSE,
@@ -13,17 +13,19 @@ import storage from "redux-persist/lib/storage";
 import blogReducer from "./blogReducer";
 
 const persistConfig: any = {
-  key: "root",
+  key: "blogs",
   storage,
 };
 console.log(blogReducer);
 
-const persistedBlogReducer = persistReducer(persistConfig, blogReducer);
+const rootReducer = combineReducers({
+  blogReducer,
+  blogReducer2: blogReducer,
+});
+const persistedBlogReducer = persistReducer(persistConfig, rootReducer);
 
 const store = configureStore({
-  reducer: {
-    blogReducer: persistedBlogReducer,
-  },
+  reducer: persistedBlogReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
